@@ -1,9 +1,10 @@
 import './App.css'
+import HelloReactWorld from './HelloReactWorld'
 
 function App() {
   return (
     <>
-      <h1>Hello React World !</h1>
+      <HelloReactWorld />
     </>
   )
 }
