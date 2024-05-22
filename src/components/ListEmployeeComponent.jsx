@@ -1,5 +1,8 @@
+import React, {useState, useEffect} from "react";
+import { listEmployees } from "../services/EmployeeService";
+
 const ListEmployeeComponent = () => {
-  const dummyData = [
+  /* const dummyData = [
     {
       id: 1,
       firstName: "Méliane",
@@ -18,7 +21,21 @@ const ListEmployeeComponent = () => {
       lastName: "Buffon",
       email: "orlandobuffon@gmail.com",
     },
-  ];
+  ]; */
+
+  // Returns List of Employees and the function allowing 
+  // to update this "employees" State Variable
+  const [employees, setEmployees] = useState([]);
+
+  // Get the Response of the REST API and Store that Data 
+  // into the "employees" State Variable
+  useEffect(() => {
+    listEmployees().then((response) => {
+      setEmployees(response.data);
+    }).catch(errror => {
+      console.error(errror);
+    })
+  }, []);
 
   return (
     <div className="container">
@@ -33,14 +50,22 @@ const ListEmployeeComponent = () => {
           </tr>
         </thead>
         <tbody>
-          {dummyData.map((employee) => (
-            <tr key={employee.id}>
-              <td>{employee.id}</td>
-              <td>{employee.firstName}</td>
-              <td>{employee.lastName}</td>
-              <td>{employee.email}</td>
-            </tr>
-          ))}
+          {/* {dummyData.map((employee) => ( */}
+          {
+            /* The "employees" State Variable Hold the Response 
+            Of the REST API */
+          }
+          {
+            employees.map((employee) => (
+                <tr key={employee.id}>
+                  <td>{employee.id}</td>
+                  <td>{employee.firstName}</td>
+                  <td>{employee.lastName}</td>
+                  <td>{employee.email}</td>
+                </tr>
+              )
+            )
+          }
         </tbody>
       </table>
     </div>
