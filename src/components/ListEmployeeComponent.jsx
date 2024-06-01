@@ -1,31 +1,12 @@
 import React, {useState, useEffect} from "react";
 import { listEmployees } from "../services/EmployeeService";
+import { useNavigate } from "react-router-dom";
 
 const ListEmployeeComponent = () => {
-  /* const dummyData = [
-    {
-      id: 1,
-      firstName: "Méliane",
-      lastName: "Dodo",
-      email: "melianedodo@gmail.com",
-    },
-    {
-      id: 2,
-      firstName: "Tony",
-      lastName: "Stark",
-      email: "tonystark@gmail.com",
-    },
-    {
-      id: 3,
-      firstName: "Orlando",
-      lastName: "Buffon",
-      email: "orlandobuffon@gmail.com",
-    },
-  ]; */
-
   // Returns List of Employees and the function allowing 
   // to update this "employees" State Variable
   const [employees, setEmployees] = useState([]);
+  const navigator = useNavigate();
 
   // Get the Response of the REST API and Store that Data 
   // into the "employees" State Variable
@@ -37,9 +18,17 @@ const ListEmployeeComponent = () => {
     })
   }, []);
 
+  function addNewEmployee() {
+    // On Click to "Add Employee" Button ==> Sends User 
+    // to /add-employee Endpoint
+    navigator('/add-employee')
+  }
+
   return (
     <div className="container">
       <h1 className="text-center">List of Employees</h1>
+      {/* On Click to "Add Employee" Button ==> Triggers addNewEmployee Function */}
+      <button className="btn btn-primary mb-2" onClick={addNewEmployee}>Add Employee</button>
       <table className="table table-striped table-bordered">
         <thead>
           <tr>
@@ -50,7 +39,6 @@ const ListEmployeeComponent = () => {
           </tr>
         </thead>
         <tbody>
-          {/* {dummyData.map((employee) => ( */}
           {
             /* The "employees" State Variable Hold the Response 
             Of the REST API */
