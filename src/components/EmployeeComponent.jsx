@@ -2,9 +2,7 @@ import React from 'react'
 
 const EmployeeComponent = () => {
   return (
-    <div>
-      
-    </div>
+    <div>EmployeeComponent</div>
   )
 }
 
