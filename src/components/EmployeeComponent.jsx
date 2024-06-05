@@ -6,22 +6,6 @@ const EmployeeComponent = () => {
   const [lastName, setLastName] = useState(''); 
   const [email, setEmail] = useState(''); 
 
-  // To Get the Value from Input Text Box
-  // First Name
-  function handleFirstName(e) {
-    setFirstName(e.target.value)
-  }
-  
-  // Last Name
-  function handleLastName(e) {
-    setLastName(e.target.value)
-  }
-
-  // Email
-  function handleEmail(e) {
-    setEmail(e.target.value)
-  }
-
   // To Submit the Employee Form
   function saveEmployee(e) {
     e.preventDefault();
@@ -32,8 +16,9 @@ const EmployeeComponent = () => {
 
   return (
     <div className='container'>
+      <br /> <br />
       <div className='row'>
-        <div className='card'>
+        <div className='card col-md-6 offset-md-3 offset-md-3'>
           <h2 className='text-center'>Add Employee</h2>
           <div className='card-body'>
             <form>
@@ -46,7 +31,7 @@ const EmployeeComponent = () => {
                   name='firstName'
                   value={firstName}
                   className='form-control'
-                  onChange={handleFirstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 >
                 </input>
               </div>
@@ -60,7 +45,7 @@ const EmployeeComponent = () => {
                   name='lastName'
                   value={lastName}
                   className='form-control'
-                  onChange={handleLastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 >
                 </input>
               </div>
@@ -74,7 +59,7 @@ const EmployeeComponent = () => {
                   name='email'
                   value={email}
                   className='form-control'
-                  onChange={handleEmail}
+                  onChange={(e) => setEmail(e.target.value)}
                 >
                 </input>
               </div>
