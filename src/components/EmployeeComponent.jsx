@@ -22,6 +22,14 @@ const EmployeeComponent = () => {
     setEmail(e.target.value)
   }
 
+  // To Submit the Employee Form
+  function saveEmployee(e) {
+    e.preventDefault();
+
+    const employee = {firstName, lastName, email};
+    console.log(employee);
+  }
+
   return (
     <div className='container'>
       <div className='row'>
