@@ -7,4 +7,4 @@ const REST_API_BASE_URL = "http://localhost:8080/api/v1/employees";
 export const listEmployees = () => axios.get(REST_API_BASE_URL);
 
 // Calling Add Employees REST API using Axios Library
-export const createEmployee = () => axios.post(REST_API_BASE_URL, employee);
+export const createEmployee = (employee) => axios.post(REST_API_BASE_URL, employee);

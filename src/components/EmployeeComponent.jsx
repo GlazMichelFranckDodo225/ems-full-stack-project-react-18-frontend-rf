@@ -1,17 +1,28 @@
 import React, { useState } from 'react'
+import { createEmployee } from '../services/EmployeeService';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeComponent = () => {
   // State Variables
   const [firstName, setFirstName] = useState(''); 
   const [lastName, setLastName] = useState(''); 
   const [email, setEmail] = useState(''); 
+  const navigator = useNavigate();
 
   // To Submit the Employee Form
   function saveEmployee(e) {
+    // Navigate to List Employees Page After Form Submission Doen
     e.preventDefault();
 
     const employee = {firstName, lastName, email};
     console.log(employee);
+
+    // Calling Add Employees REST API using Axios Library
+    createEmployee(employee).then((response) => {
+      console.log(response.data);
+
+      navigator("/employees");
+    })
   }
 
   return (
